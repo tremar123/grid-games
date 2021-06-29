@@ -32,7 +32,7 @@ Session(app)
 
 @app.route("/")
 def index():
-    return "Hello, world"
+    return render_template("layout.html")
 
 
 @app.route("/login")

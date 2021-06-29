@@ -1,1 +1,10 @@
-/*TODO*/
+.bg-custom {
+    background-color: #002e3d;
+}
+nav .navbar-brand {
+    font-size: 27px;
+    margin-left: 20px;
+}
+body {
+    background-color: #005566;
+}
