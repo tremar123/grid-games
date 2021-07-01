@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, redirect, render_template, request, session
+from flask.templating import render_template_string
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import HTTPException, InternalServerError, default_exceptions
@@ -34,15 +35,22 @@ Session(app)
 def index():
     return render_template("layout.html")
 
-
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return "login"
+    return render_template("login.html")
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return "register"
+    return render_template("register.html")
+
+@app.route("/bug", methods=["GET", "POST"])
+def bug():
+    return render_template("bug.html")
 
 # listen for errors
 def errorhandler(e):

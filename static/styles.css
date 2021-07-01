@@ -11,13 +11,13 @@ nav .navbar-brand {
     font-size: 27px;
 }
 
-nav .orange {
-    color: #e37c3d;
+nav .blue {
+    color: #5ccfe6;
+    margin-left: 5px;
 }
 
-nav .blue {
-    margin-left: 5px;
-    color: #5ccfe6;
+nav .yellow {
+    color: #ffd580;
 }
 
 nav .navbar-toggler {
@@ -25,14 +25,27 @@ nav .navbar-toggler {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #ffd580;
+    color: #ffd580d0;
     margin-left: 7px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:visited,
+.navbar-dark .navbar-nav .nav-link:active {
+    color: #ffd580;
+    text-shadow: 0 0 4px #ffd580;
 }
 
 nav img {
     height: 25px;
     width: 45px;
     margin-bottom: 6px;
+}
+
+a:hover {
+    -webkit-filter: drop-shadow(0 0 3px #bbc1c538);
+    filter: drop-shadow(0 0 3px #bbc1c538);
+    text-shadow: 0 0 3px #ffd58038;
 }
 
 body {
@@ -42,6 +55,9 @@ body {
 main {
     min-height: 100%;
     padding-bottom: 40px;
+    color: #ffd580;
+    overflow-x: auto;
+    text-align: center;
 }
 
 footer {
@@ -53,9 +69,59 @@ footer {
 }
 
 footer a {
-    color: #ffd580ab;
+    color: #ffd58081;
 }
 
 footer a:hover {
-    color: #808080;
+    color: #5ccfe681;
+    text-decoration: none;
+}
+
+.form-control:focus {
+    border-color: #5ccfe6;
+    box-shadow: 0 0 10px #5ccfe6;
+    outline: 0 none;
+}
+
+.form-control {
+    background-color: #00000000 !important;
+    width: auto;
+    display: inline-block;
+    color: #ffd580 !important;
+    border-color: #5ccfe6;
+}
+.btn {
+    margin: 30px;
+    background-color: #ffd580d0;
+    color: #ffffff;
+    border: none;
+}
+
+.btn:hover, .btn:active, .btn:visited {
+    background-color: #ffd580;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 0 10px #ffd580;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #5ccfe681;
+    opacity: 1; /* Firefox */
+}
+  
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #5ccfe681;
+}
+  
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #5ccfe681;
+}
+
+h1 {
+    padding-bottom: 30px;
+}
+
+#email {
+    float:left;
+    width: 350px;
 }
