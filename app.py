@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, request, session
-from flask.templating import render_template_string
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import HTTPException, InternalServerError, default_exceptions
@@ -64,7 +63,7 @@ def make_session_permanent():
 
 @app.route("/")
 def index():
-    return render_template("layout.html")
+    return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -82,12 +81,13 @@ def login():
 
         # check password
         try:
-            check_password_hash(rows.password, request.form.get("password"))
-            session["user_id"] = rows.id
-            return redirect("/")
-                
+            if check_password_hash(rows.password, request.form.get("password")):
+                session["user_id"] = rows.id
+                return redirect("/")
+            else:
+                return "invalid creditials"
         except AttributeError:
-            return "invalid username and/or password"
+            return "user does not exist"
         
     else:
         return render_template("login.html")
