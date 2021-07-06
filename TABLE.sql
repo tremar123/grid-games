@@ -7,8 +7,18 @@ CREATE TABLE users (
     );
 CREATE UNIQUE INDEX username ON users (username);
 
-CREATE TABLE game1 (
+CREATE TABLE bugs (
+    id INTEGER,
+    user_id INTEGER,
+    email TEXT,
+    text TEXT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (user_id) REFERENCES (users.id)
+);
+
+CREATE TABLE leaderboard (
+    game_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     score INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES (users.id)
 );

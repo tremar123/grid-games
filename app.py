@@ -13,9 +13,11 @@ from helpers import login_required
 app = Flask(__name__)
 
 # connect to database
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:data@localhost/gamesweb"
 
 db = SQLAlchemy(app)
+
 # users table
 class users(db.Model):
     __table_args__ = (db.UniqueConstraint("username", name="unique_username"),)
@@ -23,7 +25,20 @@ class users(db.Model):
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String, nullable=False)
 
-# TODO leaderboard table -_-
+# bugs table
+class bugs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    email = db.Column(db.String)
+    text = db.Column(db.String, nullable=False)
+
+# leaderboard table -_-
+class leaderboard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    game_id = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+    
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -42,6 +57,10 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# stay logged in after closing browser
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
 
 # app routes
 
@@ -51,9 +70,6 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if session["user_id"]:
-        return redirect("/")
-
     if request.method == "POST":
         session.clear()
 
@@ -64,16 +80,17 @@ def login():
             return "must provide password"
 
         # query user information
-        rows = 
+        rows = users.query.filter_by(username=request.form.get("username")).first()
 
         # check password
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        try:
+            check_password_hash(rows.password, request.form.get("password"))
+            session["user_id"] = rows.id
+            return redirect("/")
+                
+        except AttributeError:
             return "invalid username and/or password"
-
-        session["user_id"] = rows[0]["id"]
-
-        return redirect("/")
-
+        
     else:
         return render_template("login.html")
 
@@ -84,9 +101,6 @@ def logout():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if session["user_id"]:
-        return redirect("/")
-
     if request.method == "POST":
         session.clear()
         usern = request.form.get("username")
@@ -126,15 +140,29 @@ def register():
         db.session.commit()
 
         # login user and redirect to index page
-        rows = 
-        session["user_id"] = rows[0]["id"]
-
+        rows = users.query.filter_by(username=request.form.get("username")).first()
+        session["user_id"] = rows.id
         return redirect("/")
 
+    else:
+        return render_template("register.html")
+
+
 @app.route("/bug", methods=["GET", "POST"])
-@login_required
 def bug():
-    return render_template("bug.html")
+    if request.method == "POST":
+        try:
+            bug = bugs(user_id=session["user_id"], email=request.form.get("email"), text=request.form.get("issue"))
+            db.session.add(bug)
+            db.session.commit()
+            return render_template("bug_thanks.html")
+        except KeyError:
+            bug = bugs(email=request.form.get("email"), text=request.form.get("issue"))
+            db.session.add(bug)
+            db.session.commit()
+            return render_template("bug_thanks.html")
+    else:
+        return render_template("bug.html")
 
 # listen for errors
 def errorhandler(e):
