@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask, redirect, render_template, request, session
 from flask.templating import render_template_string
 from flask_session import Session
@@ -14,8 +12,8 @@ app = Flask(__name__)
 
 # connect to database
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:data@localhost/gamesweb"
-
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://zrvuokpulkgbtb:e88845a60c0a80c98a78414a82559910edb08da67332294689fb9300e38572f0@ec2-54-220-53-223.eu-west-1.compute.amazonaws.com:5432/d38gad1m26bicr"
+                                        
 db = SQLAlchemy(app)
 
 # users table
