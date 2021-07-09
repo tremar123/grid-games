@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", main)
+function main() {
 
     //cards array
     const cardsArray = [
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "a",
-            img: "/static/memory-game/images/a.svg"
+            img: "/static/memory-game/images/a1.svg"
         },
         {
             name: "body",
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "body",
-            img: "/static/memory-game/images/body.svg"
+            img: "/static/memory-game/images/body1.svg"
         },
         {
             name: "button",
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "button",
-            img: "/static/memory-game/images/button.svg"
+            img: "/static/memory-game/images/button1.svg"
         },
         {
             name: "div",
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "div",
-            img: "/static/memory-game/images/div.svg"
+            img: "/static/memory-game/images/div1.svg"
         },
         {
             name: "form",
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "form",
-            img: "/static/memory-game/images/form.svg"
+            img: "/static/memory-game/images/form1.svg"
         },
         {
             name: "h1",
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "h1",
-            img: "/static/memory-game/images/h1.svg"
+            img: "/static/memory-game/images/h11.svg"
         },
         {
             name: "head",
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "head",
-            img: "/static/memory-game/images/head.svg"
+            img: "/static/memory-game/images/head1.svg"
         },
         {
             name: "html",
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "html",
-            img: "/static/memory-game/images/html.svg"
+            img: "/static/memory-game/images/html1.svg"
         },
         {
             name: "nav",
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             name: "nav",
-            img: "/static/memory-game/images/nav.svg"
+            img: "/static/memory-game/images/nav1.svg"
         },
     ]
 
@@ -85,51 +86,78 @@ document.addEventListener("DOMContentLoaded", () => {
     let cardsFound = [];
 
     //create board
-    function createBoard() {
-        for (let i = 0; i < cardsArray.length; i++) {
-            var card = document.createElement("img");
-            card.classList.add("cards")
-            card.setAttribute("src", "/static/memory-game/images/blank.svg");
-            card.setAttribute("data-id", i);
-            card.addEventListener("click", flipCard);
-            grid.appendChild(card);
-        }
-    }
-
+    
     //check for matches
     function checkForMatch() {
         const cards = document.querySelectorAll(".cards");
         const firstId = cardsChosenId[0];
         const secondId = cardsChosenId[1];
-
-        if (cardsChosen[0] === cardsChosen[1]) {
+        
+        if (firstId == secondId) {
+            cards[firstId].setAttribute("src", "/static/memory-game/images/blank.svg")
+            cards[secondId].setAttribute("src", "/static/memory-game/images/blank.svg")
+        }
+        else if (cardsChosen[0] === cardsChosen[1]) {
+            cards[firstId].removeEventListener("click", flipCard)
+            cards[secondId].removeEventListener("click", flipCard)
             cardsFound.push(cardsChosen);
         } else {
             cards[firstId].setAttribute("src", "/static/memory-game/images/blank.svg");
             cards[secondId].setAttribute("src", "/static/memory-game/images/blank.svg");
         }
-
+        //clear arrays
         cardsChosen = [];
         cardsChosenId = [];
-        resultDisplay.textContent = cardsFound.lenght;
+        resultDisplay.textContent = cardsFound.length;
         
-        if (cardsFound.lenght === cardsArray.lenght/2) {
-            alert("you won!")
-            resultDisplay.textContent = "You won!";
+        if (cardsFound.length === cardsArray.length/2) {
+            document.querySelector("h3").innerHTML = "All pair found! Congratulations";
+            
+            for (let i = 0; i < cards.length; i++){
+                cards[i].removeEventListener("click", flipCard)
+            }
+            
+            //create button that restarts game
+            const main = document.querySelector("main");
+            const button = document.createElement("button");
+            button.classList.add("btn");
+            button.setAttribute("onclick", "restart()")
+            button.innerHTML = "Play again!"
+            main.appendChild(button);
         }
     }
-
+    
     //flip card
     function flipCard() {
         let cardId = this.getAttribute("data-id");
         cardsChosen.push(cardsArray[cardId].name);
         cardsChosenId.push(cardId);
         this.setAttribute("src", cardsArray[cardId].img);
-        if (cardsChosen.length ===2) {
+        if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500);
         }
     }
-
-window.onload = createBoard;
     
-})
+    
+    window.onload = createBoard(grid, cardsArray, flipCard);
+    
+}
+
+function restart() {
+    let h = document.querySelector("h3");
+    h.innerHTML = "Score:<span id='result'>0</span>";
+    document.querySelectorAll('.cards').forEach(e => e.remove());
+    document.querySelectorAll('.btn').forEach(e => e.remove());
+    main();
+}
+
+function createBoard(grid, cardsArray, flipCard) {
+    for (let i = 0; i < cardsArray.length; i++) {
+        const card = document.createElement("img");
+        card.classList.add("cards");
+        card.setAttribute("src", "/static/memory-game/images/blank.svg");
+        card.setAttribute("data-id", i);
+        card.addEventListener("click", flipCard);
+        grid.appendChild(card);
+    }
+}

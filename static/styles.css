@@ -61,10 +61,11 @@ main {
     min-height: 100%;
     overflow: auto;
     text-align: center;
-    margin-bottom: 50fpx;
+    margin-bottom: 70px;
 }
 
 footer {
+
     position: absolute;
     bottom: 0;
     left: 0;
