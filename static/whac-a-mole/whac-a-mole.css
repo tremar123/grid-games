@@ -1,3 +1,26 @@
 span {
     color: #5ccfe6;
 }
+
+.grid {
+    display: table;
+    margin: auto;
+}
+
+.row {
+    display: table-row;
+}
+
+.square {
+    width: 150px;
+    height: 150px;
+    border-style: solid;
+    border-color: #5ccfe6;
+    display: table-cell;
+}
+
+.mole {
+
+    background-image: url(/static/whac-a-mole/mole.png);
+    background-size: cover;
+}
