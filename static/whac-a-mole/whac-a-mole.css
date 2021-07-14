@@ -24,3 +24,7 @@ span {
     background-image: url(/static/whac-a-mole/mole.png);
     background-size: cover;
 }
+
+.btn {
+    margin-top: 50px;
+}

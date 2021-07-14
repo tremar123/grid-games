@@ -94,12 +94,12 @@ function main() {
         const secondId = cardsChosenId[1];
         
         if (firstId == secondId) {
-            cards[firstId].setAttribute("src", "/static/memory-game/images/blank.svg")
-            cards[secondId].setAttribute("src", "/static/memory-game/images/blank.svg")
+            cards[firstId].setAttribute("src", "/static/memory-game/images/blank.svg");
+            cards[secondId].setAttribute("src", "/static/memory-game/images/blank.svg");
         }
         else if (cardsChosen[0] === cardsChosen[1]) {
-            cards[firstId].removeEventListener("click", flipCard)
-            cards[secondId].removeEventListener("click", flipCard)
+            cards[firstId].removeEventListener("click", flipCard);
+            cards[secondId].removeEventListener("click", flipCard);
             cardsFound.push(cardsChosen);
         } else {
             cards[firstId].setAttribute("src", "/static/memory-game/images/blank.svg");
@@ -114,15 +114,15 @@ function main() {
             document.querySelector("h3").innerHTML = "All pair found! Congratulations";
             
             for (let i = 0; i < cards.length; i++){
-                cards[i].removeEventListener("click", flipCard)
+                cards[i].removeEventListener("click", flipCard);
             }
             
             //create button that restarts game
             const main = document.querySelector("main");
             const button = document.createElement("button");
             button.classList.add("btn");
-            button.setAttribute("onclick", "restart()")
-            button.innerHTML = "Play again!"
+            button.setAttribute("onclick", "restart()");
+            button.innerHTML = "Play again!";
             main.appendChild(button);
         }
     }

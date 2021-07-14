@@ -30,6 +30,7 @@ class bugs(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     email = db.Column(db.String)
     text = db.Column(db.String, nullable=False)
+    browser = db.Column(db.String)
 
 # leaderboard table -_-
 class leaderboard(db.Model):
@@ -152,12 +153,12 @@ def register():
 def bug():
     if request.method == "POST":
         try:
-            bug = bugs(user_id=session["user_id"], email=request.form.get("email"), text=request.form.get("issue"))
+            bug = bugs(user_id=session["user_id"], email=request.form.get("email"), text=request.form.get("issue"), browser=request.headers.get("User-Agent"))
             db.session.add(bug)
             db.session.commit()
             return render_template("bug_thanks.html")
         except KeyError:
-            bug = bugs(email=request.form.get("email"), text=request.form.get("issue"))
+            bug = bugs(email=request.form.get("email"), text=request.form.get("issue"), browser=request.headers.get("User-Agent"))
             db.session.add(bug)
             db.session.commit()
             return render_template("bug_thanks.html")
