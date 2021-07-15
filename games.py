@@ -11,3 +11,8 @@ def memory_game():
 # @login_required
 def whac_a_mole():
     return render_template("whac-a-mole.html")
+
+@app.route("/connect-four")
+# @login_required
+def connect_four():
+    return render_template("connect-four.html")
