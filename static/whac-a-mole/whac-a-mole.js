@@ -2,6 +2,7 @@ const button = document.createElement("button");
 
 window.onload = startGame;
 
+//generate starting button
 function startGame() {
     button.classList.add("btn");
     button.innerHTML = "Start!";
@@ -10,6 +11,7 @@ function startGame() {
 }
 
 function game() {
+    //remove start button and start game
     button.remove();
     const square = document.querySelectorAll(".square");
     const mole = document.querySelectorAll(".mole");
@@ -31,12 +33,17 @@ function game() {
         hitPosition = randomPosition.id;
     }
     
+    //check if clicked position match where mole is
     square.forEach (id => {
         id.addEventListener("mouseup", () => {
             if (id.id == hitPosition) {
                 result++;
                 score.textContent = result;
             } else {
+                id.style.borderColor = "red";
+                setInterval(function() {
+                    id.style.borderColor = "#5ccfe6";
+                }, 300);
                 result--;
                 score.textContent = result;
             } 
@@ -51,6 +58,7 @@ function game() {
     moveMole();
     let timerId = setInterval(countdown, 1000);
     
+    //timer
     function countdown() {
         currentTime--;
         timeLeft.textContent = currentTime;
