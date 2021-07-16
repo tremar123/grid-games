@@ -1,0 +1,57 @@
+.grid {
+    width: 305px;
+    height: 305px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid #5ccfe6;
+    margin: auto;
+    margin-bottom: 90px;
+    margin-top: 20px;
+}
+
+.grid div {
+    width: 30px;
+    height: 30px;
+}
+
+.snake {
+    background-color: #ffd580;
+}
+
+.btn {
+    margin: 5px;
+}
+
+h1 {
+    margin: 5px;
+    padding: 0px;
+}
+
+.apple {
+    background-color: red;
+}
+
+span {
+    color: #5ccfe6;
+}
+
+.swal-modal {
+    background-color: #171c28;
+}
+
+.swal-title {
+    color: #ffd580;
+}
+
+.swal-button {
+    background-color: #5ccfe6;
+}
+
+.swal-button:hover {
+    background-color: #5ccfe6 !important;
+    box-shadow: 0 0 10px #5ccfe6;
+}
+
+.swal-text {
+    color: #5ccfe6;
+}

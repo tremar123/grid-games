@@ -16,3 +16,8 @@ def whac_a_mole():
 # @login_required
 def connect_four():
     return render_template("connect-four.html")
+
+@app.route("/snake")
+# @login_required
+def snake():
+    return render_template("snake.html")

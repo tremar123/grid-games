@@ -65,8 +65,13 @@ function game() {
         
         if (currentTime === 0) {
             clearInterval(timerId);
-            alert("GAME OVER! Your score: " + result);
-            location.reload();
+            swal({
+                title: "GAME OVER!",
+                text: "Your score: " + result,
+                button: "Play again",
+            }).then(function() {
+                location.reload();
+            });
         }
     }
 }

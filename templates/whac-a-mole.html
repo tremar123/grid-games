@@ -3,6 +3,7 @@
 {% block head %}
     <link rel="stylesheet" href="/static/whac-a-mole/whac-a-mole.css">
     <script src="/static/whac-a-mole/whac-a-mole.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -11,8 +12,8 @@
 
 {% block main %}
     <h1>Whac-a-mole</h1>
-    <h2>Time left:<span id="time-left">30</span><span>s</span></h2>
-    <h2>Score:<span id="score">0</span></h2>
+    <h3>Time left:<span id="time-left">20</span><span>s</span></h3>
+    <h3>Score:<span id="score">0</span></h3>
     
     <div class="grid">
         <div class="row">
