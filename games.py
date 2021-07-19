@@ -21,3 +21,7 @@ def connect_four():
 # @login_required
 def snake():
     return render_template("snake.html")
+
+@app.route("/space-invaders")
+def space_invaders():
+    return render_template("space-invaders.html")
