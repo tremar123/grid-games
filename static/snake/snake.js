@@ -116,21 +116,21 @@ document.addEventListener("DOMContentLoaded", () => {
     LEFT.addEventListener("click", leftBtn)
     DOWN.addEventListener("click", downBtn)
 
-function rightBtn() {
-    squares[currentIndex].classList.remove("snake");
-    direction = 1;
-}
-function upBtn() {
-    squares[currentIndex].classList.remove("snake");
-    direction = -width;
-}
-function leftBtn() {
-    squares[currentIndex].classList.remove("snake");
-    direction = -1;
-}
-function downBtn() {
-    squares[currentIndex].classList.remove("snake");
-    direction = +width;
-}
+    function rightBtn() {
+        squares[currentIndex].classList.remove("snake");
+        direction = 1;
+    }
+    function upBtn() {
+        squares[currentIndex].classList.remove("snake");
+        direction = -width;
+    }
+    function leftBtn() {
+        squares[currentIndex].classList.remove("snake");
+        direction = -1;
+    }
+    function downBtn() {
+        squares[currentIndex].classList.remove("snake");
+        direction = +width;
+    }
 
 })
