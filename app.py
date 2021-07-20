@@ -14,7 +14,7 @@ import games
 # connect to database
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://zrvuokpulkgbtb:e88845a60c0a80c98a78414a82559910edb08da67332294689fb9300e38572f0@ec2-54-220-53-223.eu-west-1.compute.amazonaws.com:5432/d38gad1m26bicr"
-                                        
+
 db = SQLAlchemy(app)
 
 # users table
@@ -38,7 +38,7 @@ class leaderboard(db.Model):
     game_id = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     score = db.Column(db.Integer, nullable=False)
-    
+
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -91,7 +91,6 @@ def login():
                 return "invalid creditials"
         except AttributeError:
             return "user does not exist"
-        
     else:
         return render_template("login.html")
 

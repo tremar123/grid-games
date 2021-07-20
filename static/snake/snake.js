@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 title: "GAME OVER!",
                 text: "Your score: " + score,
                 button: "Play again",
-            }).then(function() {
+            }).then(() => {
                 clearInterval(interval);
                 startGame();
             });
@@ -132,5 +132,4 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[currentIndex].classList.remove("snake");
         direction = +width;
     }
-
 })

@@ -84,8 +84,6 @@ function main() {
     let cardsChosen = [];
     let cardsChosenId = [];
     let cardsFound = [];
-
-    //create board
     
     //check for matches
     function checkForMatch() {
@@ -111,19 +109,16 @@ function main() {
         resultDisplay.textContent = cardsFound.length;
         
         if (cardsFound.length === cardsArray.length/2) {
-            document.querySelector("h3").innerHTML = "All pair found! Congratulations";
-            
             for (let i = 0; i < cards.length; i++){
                 cards[i].removeEventListener("click", flipCard);
             }
-            
-            //create button that restarts game
-            const main = document.querySelector("main");
-            const button = document.createElement("button");
-            button.classList.add("btn");
-            button.setAttribute("onclick", "restart()");
-            button.innerHTML = "Play again!";
-            main.appendChild(button);
+
+            return swal({
+                title: "All pairs found!",
+                button: "Play Again",
+            }).then(() => {
+                restart();
+            })
         }
     }
     
@@ -138,9 +133,7 @@ function main() {
         }
     }
     
-    
     window.onload = createBoard(grid, cardsArray, flipCard);
-    
 }
 
 function restart() {

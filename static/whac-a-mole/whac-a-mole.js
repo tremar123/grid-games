@@ -69,7 +69,7 @@ function game() {
                 title: "GAME OVER!",
                 text: "Your score: " + result,
                 button: "Play again",
-            }).then(function() {
+            }).then(() => {
                 location.reload();
             });
         }

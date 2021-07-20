@@ -30,20 +30,3 @@ h3 {
 #color {
     color: #ffd580;
 }
-
-.swal-modal {
-    background-color: #171c28;
-}
-
-.swal-title {
-    color: #ffd580;
-}
-
-.swal-button {
-    background-color: #5ccfe6;
-}
-
-.swal-button:hover {
-    background-color: #5ccfe6 !important;
-    box-shadow: 0 0 10px #5ccfe6;
-}

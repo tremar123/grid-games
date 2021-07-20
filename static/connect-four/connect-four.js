@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 swal({
                     title: "Player 2 wins!",
                     button: "Play again",
-                }).then(function() {
+                }).then(() => {
                     location.reload();
                 });
             }
