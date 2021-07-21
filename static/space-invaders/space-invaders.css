@@ -35,23 +35,35 @@ span {
     color: #5ccfe6;
 }
 
+#controls {
+    display: none;
+}
+
 @media (pointer: coarse) and (hover: none) {
     #controls {
         display: flex;
         width: 100%;
-        height: 50px;
+        height: 90px;
         margin: auto;
         justify-content: center;
     }
     .buttons {
-        height: 50px;
-        width: 50px;
-        background: #5ccfe6;
+        height: 90px;
+        width: 90px;
         cursor: pointer;
         margin-left: 5px;
     }
 
     #shoot {
         margin-left: 40px;
+    }
+
+    .images {
+        height: 100%;
+        width: 100%;
+    }
+
+    #left {
+        transform: rotate(180deg);
     }
 }

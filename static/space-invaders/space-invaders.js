@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    invaderId = setInterval(moveInvaders, 500);
+    invaderId = setInterval(moveInvaders, 200);
     
     //shoot
     function shootLaser(key) {
