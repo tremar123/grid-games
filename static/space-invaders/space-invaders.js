@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll(".grid div");
     const resultDisplay = document.querySelector("#result");
     const main = document.querySelector("main");
+    const left = document.querySelector("#left");
+    const right = document.querySelector("#right");
+    const shootBtn = document.querySelector("#shoot");
+
     let width = 15;
     let currentShooterIndex = 202;
     let currentInvaderIndex = 0;
@@ -9,6 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let result = 0;
     let direction = 1;
     let invaderId;
+    let key;
+
+    //disable keys to move page
+    window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+    }, false);
 
     //define invaders
     const alienInvaders = [
@@ -88,19 +100,19 @@ document.addEventListener("DOMContentLoaded", () => {
         //win
         if (alienInvadersTakenDown.length === alienInvaders.length) {
             clearInterval(invaderId);
-            return swal({
-                title: "You win!",
-                button: "Play Again",
-            }).then(() => {
-                location.reload();
-            })
+            resultDisplay.textContent = "You win!";
+            let button = document.createElement("button");
+            button.classList.add("btn");
+            button.innerHTML = "Play Again";
+            button.setAttribute("onclick", "window.location.reload();");
+            main.appendChild(button);
         }
     }
     
     invaderId = setInterval(moveInvaders, 500);
     
     //shoot
-    function shoot(e) {
+    function shootLaser(key) {
         let laserId;
         let currentLaserIndex = currentShooterIndex;
         //move laser from shooter up
@@ -127,11 +139,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        switch(e.keyCode) {
+        switch(key) {
             case 32:
                 laserId = setInterval(moveLaser, 100);
+                key = 0;
                 break;
         }
     }
+
+    function moveLeft() {
+        squares [currentShooterIndex].classList.remove("shooter");
+        if (currentShooterIndex % width !== 0) currentShooterIndex -= 1;
+        squares[currentShooterIndex].classList.add("shooter");
+    }
+
+    function moveRight() {
+        squares [currentShooterIndex].classList.remove("shooter");
+        if (currentShooterIndex % width < width -1) currentShooterIndex += 1;
+        squares[currentShooterIndex].classList.add("shooter");
+    }
+
+    function shoot(e) {
+        if (e.keyCode === 32) {
+            key = 32;
+            shootLaser(key);
+        }
+    }
+
+    function shootByButton() {
+        key = 32;   
+        shootLaser(key);
+    }
+
     document.addEventListener("keyup", shoot);
+    left.addEventListener("click", moveLeft);
+    right.addEventListener("click", moveRight);
+    shootBtn.addEventListener("click", shootByButton);
 })

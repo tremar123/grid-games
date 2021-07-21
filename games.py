@@ -25,3 +25,11 @@ def snake():
 @app.route("/space-invaders")
 def space_invaders():
     return render_template("space-invaders.html")
+
+@app.route("/frogger")
+def frogger():
+    return render_template("frogger.html")
+
+@app.route("/tetris")
+def tetris():
+    return render_template("tetris.html")

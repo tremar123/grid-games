@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let intervalTime = 0;
     let interval = 0;
 
+    //disable keys to move page
     window.addEventListener("keydown", function(e) {
         if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
             e.preventDefault();
