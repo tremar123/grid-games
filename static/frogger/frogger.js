@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const logsLeft = document.querySelectorAll(".log-left");
     const logsRight = document.querySelectorAll(".log-right");
     const width = 9;
-    let currentIndex = 76;
+    let currentIndex = 103;
     let currentTime = 20;
     let timerId;
 
