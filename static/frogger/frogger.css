@@ -1,0 +1,47 @@
+.grid {
+    border: 1px solid #5ccfe6;
+    display: flex;
+    flex-wrap: wrap;
+    height: 298px;
+    width: 299px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.grid div {
+    height: 33px;
+    width: 33px;
+}
+
+.end {
+    background-color: red;
+}
+
+.start {
+    background-color: blue;
+}
+
+
+span {
+    color: #5ccfe6;
+}
+
+.c1 {
+    background-color: black;
+}
+
+.c2, .c3 {
+    background-color: grey;
+}
+
+.l1, .l2, .l3 {
+    background-color: brown;
+}
+
+.l4, .l5 {
+    background-color: lightblue;
+}
+
+.frog {
+    background-color: green;
+}
