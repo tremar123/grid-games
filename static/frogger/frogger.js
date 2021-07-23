@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //render frog on start
     squares[currentIndex].classList.add("frog");
 
+    window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+    }, false);
+
     //move frog
     function moveFrog(e) {
         squares[currentIndex].classList.remove("frog");
