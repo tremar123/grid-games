@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const carsRight = document.querySelectorAll(".car-right");
     const logsLeft = document.querySelectorAll(".log-left");
     const logsRight = document.querySelectorAll(".log-right");
+    
+    const UP = document.querySelector("#up");
+    const RIGHT = document.querySelector("#right");
+    const LEFT = document.querySelector("#left");
+    const DOWN = document.querySelector("#down");
+    
     const width = 9;
     let currentIndex = 103;
     let currentTime = 20;
@@ -15,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //render frog on start
     squares[currentIndex].classList.add("frog");
 
+    //disable keys to move page
     window.addEventListener("keydown", function(e) {
         if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
             e.preventDefault();
@@ -212,5 +219,39 @@ document.addEventListener("DOMContentLoaded", () => {
         timerId = setInterval(moveEverything, 1000);
         document.addEventListener("keyup", moveFrog);
         startBtn.style.visibility = "hidden";
+        UP.addEventListener("click", upBtn);
+        RIGHT.addEventListener("click", rightBtn);
+        LEFT.addEventListener("click", leftBtn);
+        DOWN.addEventListener("click", downBtn);
     });
+
+
+    function rightBtn() {
+        squares[currentIndex].classList.remove("frog");
+        if (currentIndex % width < width - 1) currentIndex += 1;
+        squares[currentIndex].classList.add("frog");
+        lose();
+        win();
+    }
+    function upBtn() {
+        squares[currentIndex].classList.remove("frog");
+        if (currentIndex - width >= 0) currentIndex -= width;
+        squares[currentIndex].classList.add("frog");
+        lose();
+        win();
+    }
+    function leftBtn() {
+        squares[currentIndex].classList.remove("frog");
+        if (currentIndex % width !== 0) currentIndex -= 1;
+        squares[currentIndex].classList.add("frog");
+        lose();
+        win();
+    }
+    function downBtn() {
+        squares[currentIndex].classList.remove("frog");
+        if (currentIndex + width < width * width) currentIndex += width;
+        squares[currentIndex].classList.add("frog");
+        lose();
+        win();
+    }
 });

@@ -112,10 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keyup", control);
     button.addEventListener("click", startGame);
     pause.addEventListener("click", pauseGame);
-    UP.addEventListener("click", upBtn)
-    RIGHT.addEventListener("click", rightBtn)
-    LEFT.addEventListener("click", leftBtn)
-    DOWN.addEventListener("click", downBtn)
+    UP.addEventListener("click", upBtn);
+    RIGHT.addEventListener("click", rightBtn);
+    LEFT.addEventListener("click", leftBtn);
+    DOWN.addEventListener("click", downBtn);
 
     function rightBtn() {
         squares[currentIndex].classList.remove("snake");
@@ -133,4 +133,4 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[currentIndex].classList.remove("snake");
         direction = +width;
     }
-})
+});

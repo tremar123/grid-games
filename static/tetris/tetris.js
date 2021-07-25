@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const displaySquares = document.querySelectorAll(".previous-grid div");
     let squares = Array.from(grid.querySelectorAll(".grid div"));
     const startBtn = document.querySelector("#start");
+
+    const UP = document.querySelector("#up");
+    const RIGHT = document.querySelector("#right");
+    const LEFT = document.querySelector("#left");
+    const DOWN = document.querySelector("#down");
+
     const width = 10;
     const height = 20;
     let currentPosition = 4;
@@ -214,4 +220,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-})
+
+    UP.addEventListener("mousedown", upBtn);
+    RIGHT.addEventListener("mousedown", rightBtn);
+    LEFT.addEventListener("mousedown", leftBtn);
+    DOWN.addEventListener("mousedown", downBtn);
+
+    function rightBtn() {
+        moveRight();
+    }
+    function upBtn() {
+        rotate();
+    }
+    function leftBtn() {
+        moveLeft();
+    }
+    function downBtn() {
+        moveDown();
+    }
+});
