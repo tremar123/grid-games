@@ -10,6 +10,10 @@ html {
     background-color: #171c28;
 }
 
+nav {
+    margin-bottom: 50px;
+}
+
 nav .navbar-brand {
     font-size: 27px;
 }
@@ -99,7 +103,7 @@ footer a:hover {
 }
 
 .btn {
-    margin: 30px;
+    margin: 20px;
     background-color: #ffd580d0;
     color: #ffffff;
     border: none;
@@ -123,10 +127,6 @@ footer a:hover {
   
 .form-control::-ms-input-placeholder { /* Microsoft Edge */
     color: #5ccfe681;
-}
-
-h1 {
-    padding-bottom: 30px;
 }
 
 .bug {
@@ -163,4 +163,38 @@ h1 {
 
 .swal-text {
     color: #5ccfe6;
+}
+
+h1 {
+    text-shadow: 1px 1px 3px #ffd580e0;
+    color: #ffd580;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8%;
+}
+
+@media (max-width: 768px) {
+    #gameTitle {
+        display: none;
+    }
+}
+
+#register {
+    color: #5ccfe6;
+    font-size: 13px;
+}
+
+#register:hover {
+    text-decoration: none;
+    text-shadow: 0 0 2px #5ccfe6;
+}
+
+#div-register {
+    margin-top: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 40px;
 }

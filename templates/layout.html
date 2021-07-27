@@ -32,6 +32,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
+            <ul id="gameTitle" class="nav navbar-nav navbar-logo mx-auto">
+                <li class="nav-item">
+                    <h1>{% block gameTitle %} {% endblock %}</h1>
+                </li>
+            </ul>
             {% if session.user_id %}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>

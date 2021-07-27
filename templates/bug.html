@@ -4,8 +4,11 @@
     : Report Bug
 {% endblock %}
 
+{% block gameTitle %}
+    Report bug
+{% endblock %}
+
 {% block main %}
-    <h1>Report bug</h1>
     <form action="/bug" method="post">
         <div class="form-group">
             <input class="form-control bug" name="email" type="email" placeholder="Email (Optional)" style="margin-bottom: 30px; height: auto !important;">

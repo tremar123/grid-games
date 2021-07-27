@@ -1,28 +1,30 @@
 .grid {
-    background-color: yellow;
+    background-color: #171c28;
     height: 400px;
     width: 200px;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     margin-bottom: 20px;
+    box-shadow: 3px 3px 3px black;
 }
 
 .block {
-    background-color: blue;
+    background-color: #5ccfe6;
 }
 
 .block2 {
-    background-color: purple;
+    background-color: #ffd580;
 }
 
 .block3 {
-    background-color: green;
+    visibility: hidden;
 }
 
 .grid div {
     height: 20px;
     width: 20px;
+    border: solid 1px #00000030;
 }
 
 span {
@@ -32,9 +34,10 @@ span {
 .previous-shape {
     height: 80px;
     width: 80px;
-    background-color: yellow;
+    background-color: #171c28;
     margin: auto;
     margin-bottom: 10px;
+    box-shadow: 3px 3px 3px black;
 }
 
 .previous-grid {
@@ -47,6 +50,7 @@ span {
 .previous-grid div {
     height: 20px;
     width: 20px;
+    border: solid 1px #00000030;
 }
 
 #controls {

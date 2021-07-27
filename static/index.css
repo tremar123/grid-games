@@ -1,0 +1,62 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 50px;
+    padding-bottom: 50px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    height: 220px;
+    width: 220px;
+    background-color: #171c28;
+    border: solid 1px #ffd580;
+    margin: auto;
+}
+
+#tetris {
+    background-color: #1d2433;
+}
+
+.grid img {
+    margin: auto;
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+.item {
+    width: 220px;
+    margin: auto;
+}
+
+.item .image {
+    box-shadow: 4px 4px 10px black;
+}
+
+.item .image:hover {
+    box-shadow: 4px 4px 10px #ffd58081;
+}
+
+.text-link {
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+.text-link a {
+    color: #5ccfe6;
+}
+
+.text-link a:hover {
+    color: #5ccfe6;
+    text-decoration: none;
+    text-shadow: 0 0 3px #5ccfe6;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: auto;
+    }
+}

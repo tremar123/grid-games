@@ -1,11 +1,87 @@
 {% extends "layout.html" %}
 
+{% block head %}
+	<link rel="stylesheet" href="/static/index.css">
+{% endblock %}
+
+{% block gameTitle %}
+    Games
+{% endblock %}
+
 {% block main %}
-	<a href="/memory-game">memory game</a>
-	<a href="/whac-a-mole">whac-a-mole</a>
-	<a href="/connect-four">connect-four</a>
-	<a href="/snake">snake</a>
-	<a href="/space-invaders">space-invaders</a>
-	<a href="/frogger">frogger</a>
-	<a href="/tetris">tetris</a>
+	<!-- if session.user_id  if logged, show games-->
+			<div class="grid">
+				<div class="item">
+					<a href="/memory-game">
+						<div class="image">
+							<img src="/static/homepage/memory-game.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/memory-game">Memory Game</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/whac-a-mole">
+						<div class="image">
+							<img src="/static/homepage/whac-a-mole.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/whac-a-mole">Whac-a-mole</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/connect-four">
+						<div class="image">
+							<img src="/static/homepage/connect-four.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/connect-four">Connect Four</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/snake">
+						<div class="image">
+							<img src="/static/homepage/snake.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/snake">Snake</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/space-invaders">
+						<div class="image">
+							<img src="/static/homepage/space-invaders.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/space-invaders">Space Invaders</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/frogger">
+						<div class="image">
+							<img src="/static/homepage/frogger.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/frogger">Frogger</a>
+					</div>
+				</div>
+				<div class="item">
+					<a href="/tetris">
+						<div class="image" id="tetris">
+							<img src="/static/homepage/tetris.png">
+						</div>
+					</a>
+					<div class="text-link">
+						<a href="/tetris">Tetris</a>
+					</div>
+				</div>
+			</div>
+	<!-- else  else homepage-TODO-->
+	<!-- endif -->
 {% endblock %}

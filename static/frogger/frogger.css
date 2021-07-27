@@ -13,37 +13,40 @@
     width: 33px;
 }
 
+.grid {
+    background-image: url(/static/frogger/images/grass.png);
+}
+
 .end {
-    background-color: red;
+    background-image: url(/static/frogger/images/finish.png);
 }
-
-.start {
-    background-color: blue;
-}
-
 
 span {
     color: #5ccfe6;
 }
 
-.c1 {
-    background-color: black;
+.car-right.c1{
+    background-image: url(/static/frogger/images/carblue.png);
+}
+
+.car-left.c1 {
+    background-image: url(/static/frogger/images/carRed.png);
 }
 
 .c2, .c3 {
-    background-color: grey;
+    background-image: url(/static/frogger/images/road.png);
 }
 
 .l1, .l2, .l3 {
-    background-color: brown;
+    background-image: url(/static/frogger/images/wood.png);
 }
 
 .l4, .l5 {
-    background-color: lightblue;
+    background-image: url(/static/frogger/images/water.png);
 }
 
 .frog {
-    background-color: green;
+    background-image: url(/static/frogger/images/frog.png);
 }
 
 #controls {

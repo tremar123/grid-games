@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Log In</h1>
+<h2>Log in</h2>
     <form action="/login" method="post">
         <div class="form-group">
             <input class="form-control" type="text" autofocus name="username" placeholder="Username">
@@ -17,4 +17,8 @@
             <button class="btn" type="submit">Login</button>
         </div>
     </form>
+
+    <div id="div-register">
+        <a id="register" href="/register">Don't have account? Sign up here!</a>
+    </div>
 {% endblock %}
