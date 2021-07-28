@@ -9,13 +9,12 @@ from helpers import login_required
 
 app = Flask(__name__)
 
-import games
-
 # connect to database
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://zrvuokpulkgbtb:e88845a60c0a80c98a78414a82559910edb08da67332294689fb9300e38572f0@ec2-54-220-53-223.eu-west-1.compute.amazonaws.com:5432/d38gad1m26bicr"
 
 db = SQLAlchemy(app)
+
 
 # users table
 class users(db.Model):
@@ -32,13 +31,22 @@ class bugs(db.Model):
     text = db.Column(db.String, nullable=False)
     browser = db.Column(db.String)
 
-# leaderboard table -_-
-class leaderboard(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    game_id = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+# snake table
+class snake(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
     score = db.Column(db.Integer, nullable=False)
 
+# whac a mole table
+class whac_a_mole(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    score = db.Column(db.Integer, nullable=False)
+
+# tetris table
+class tetris(db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    score = db.Column(db.Integer, nullable=False)
+
+import games
 
 # auto-reload templates
 app.config["TEMPLATES_AUTO_RELOAD"] = True

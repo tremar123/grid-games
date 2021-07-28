@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             
             $.post( "/snake", {
-                javascript_data: score 
+                score: score
             });
             
             clearInterval(interval);

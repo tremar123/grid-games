@@ -1,5 +1,6 @@
-from app import app
-from flask import render_template, request, jsonify
+from flask_session import Session
+from app import app, session, db
+from flask import render_template, request
 from helpers import login_required
 
 @app.route("/memory-game")
@@ -21,9 +22,11 @@ def connect_four():
 @login_required
 def snake():
     if request.method == "POST":
-        score = request.form["javascript_data"]
-        print(score)
-        return score
+        score = int(request.form["score"])
+        user = int(session["user_id"])
+        db.engine.execute("INSERT INTO snake (user_id, score) VALUES (%(user)s, %(score)s)", {"user": user, "score": score})
+        # TODO: updating on user somehow!!!!
+        return
     else:
         return render_template("snake.html")
 
