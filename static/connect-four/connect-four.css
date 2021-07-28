@@ -8,20 +8,21 @@
     margin-bottom: 50px;
 }
   
-.grid div {
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-}
-  
+
 .player-one {
     background-color: #ffd580;
     border-radius: 10px;
 }
-  
+
 .player-two {
     background-color: #5ccfe6;
     border-radius: 10px;
+}
+
+.grid div {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
 }
 
 h3 {
@@ -30,4 +31,8 @@ h3 {
 
 #color {
     color: #ffd580;
+}
+
+.invinsible {
+    visibility: hidden;
 }

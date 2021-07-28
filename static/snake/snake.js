@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             (currentSnake[0] - width < 0 && direction === -width) || //if hits top
             squares[currentSnake[0] + direction].classList.contains("snake")
         ) {
-            return swal({
+            swal({
                 title: "GAME OVER!",
                 text: "Your score: " + score,
                 button: "Play again",
@@ -59,6 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearInterval(interval);
                 startGame();
             });
+            
+            $.post( "/snake", {
+                javascript_data: score 
+            });
+            
+            clearInterval(interval);
+            return;
         }
 
         const tail = currentSnake.pop();
