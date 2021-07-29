@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 startGame();
             });
             
-            $.post( "/snake", {
+            $.post("/snake", {
                 score: score
             });
             

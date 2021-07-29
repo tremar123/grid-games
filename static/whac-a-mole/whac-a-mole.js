@@ -65,7 +65,12 @@ function game() {
         
         if (currentTime === 0) {
             clearInterval(timerId);
-            swal({
+
+            $.post("/whac-a-mole", {
+                score: result
+            });
+
+            return swal({
                 title: "GAME OVER!",
                 text: "Your score: " + result,
                 button: "Play again",

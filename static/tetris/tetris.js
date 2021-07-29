@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             timerId = null;
         } else {
             draw();
-            timerId = setInterval(moveDown, 900);
+            timerId = setInterval(moveDown, 800);
             nextRandom = Math.floor(Math.random() * tetrominos.length);
             displayShape();
         }
@@ -192,6 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (current.some(index => squares[currentPosition + index].classList.contains("block2"))){
             clearInterval(timerId);
             document.removeEventListener("keydown", control);
+
+            $.post("/tetris", {
+                score: score
+            });
+
             return swal({
                 title: "Game Over!",
                 text: "Your score: " + score,

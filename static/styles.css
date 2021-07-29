@@ -3,7 +3,7 @@ html {
     min-height: 100%;
     overflow: auto;
     padding: 0;
-    background-color: #1d2433;
+    background-color: #22293b;
 }
 
 .bg-custom {
@@ -56,7 +56,7 @@ nav img {
 }
 
 body {
-    background-color: #1d2433;
+    background-image: linear-gradient(to bottom, #191f2c, #22293b);
     font-family: 'Source Code Pro', monospace !important;
 }
 
