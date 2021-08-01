@@ -117,23 +117,23 @@ def register():
 
         # check username
         if not usern:
-            return "Enter your username"
+            return "Enter your username!"
 
         # check password
         if not passw:
-            return "Enter your password"
+            return "Enter your password!"
 
         # password lenght
         if len(passw) < 6:
-            return "Password must be at least 6 characters long"
+            return "Password must be at least 6 characters long!"
 
         # check if there is at leat one digit in password
         if not any(char.isdigit() for char in passw):
-            return "Password must contain at least one number"
+            return "Password must contain at least one number!"
 
         # check confimation of password
         if not confirm:
-            return "Confirm your password"
+            return "Confirm your password!"
 
         # passwords match
         if request.form.get("password") != request.form.get("confirmation"):

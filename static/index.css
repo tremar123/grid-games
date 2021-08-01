@@ -33,7 +33,7 @@
 }
 
 .item .image {
-    box-shadow: 4px 4px 10px black;
+    box-shadow: 4px 4px 15px #111111;
 }
 
 .item .image:hover {
@@ -47,6 +47,11 @@
 
 .text-link a {
     color: #5ccfe6;
+    font-size: 25px;
+}
+
+.text-link p {
+    font-size: 12px;
 }
 
 .text-link a:hover {

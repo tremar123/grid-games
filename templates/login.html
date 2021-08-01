@@ -4,6 +4,10 @@
     : Log In
 {% endblock %}
 
+{% block head %}
+    <script src="/static/login.js"></script>
+{% endblock %}
+
 {% block main %}
 <h2>Log in</h2>
     <form action="/login" method="post">

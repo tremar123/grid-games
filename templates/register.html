@@ -4,17 +4,21 @@
     : Sign Up
 {% endblock %}
 
+{% block head %}
+    <script src="/static/register.js"></script>
+{% endblock %}
+
 {% block main %}
 <h2>Sign up</h2>
     <form action="/register" method="post">
         <div class="form-group">
-            <input class="form-control" type="text" autocomplete="off" autofocus name="username" placeholder="Username" required>
+            <input class="form-control username" type="text" autocomplete="off" autofocus name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group password-div">
+            <input class="form-control password" type="password" autocomplete="off" name="password" placeholder="Password" required minlength="6">
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" autocomplete="off" name="password" placeholder="Password" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" autocomplete="off" name="confirmation" placeholder="Confirm Password" required>
+            <input class="form-control passwordConfirm" type="password" autocomplete="off" name="confirmation" placeholder="Confirm Password" required minlength="6">
         </div>
         <div>
             <button class="btn" type="submit">Sign up</button>

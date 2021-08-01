@@ -214,11 +214,11 @@ thead th {
     color: #ffffff;
 }
 
-thead #left {
+thead #left-table-corner {
     border-radius: 10px 0 0 0;
 }
 
-thead #right {
+thead #right-table-corner {
     border-radius: 0 10px 0 0;
 }
 
@@ -232,10 +232,10 @@ thead #right {
     background-color: #171c28;
 }
 
-tbody #current-user #left{
+tbody #current-user #left-table-corner{
     border-radius: 0 0 0 10px;
 }
 
-tbody #current-user #right{
+tbody #current-user #right-table-corner{
     border-radius: 0 0 10px 0;
 }
