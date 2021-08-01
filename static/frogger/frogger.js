@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const width = 9;
     let currentIndex = 103;
-    let currentTime = 20;
+    let currentTime = 15;
     let timerId;
 
     //render frog on start

@@ -39,17 +39,33 @@
         <table>
             <thead>
                 <tr>
-                    <th>Rank:</th>
+                    <th id="left">Rank:</th>
                     <th>Player:</th>
-                    <th>Score:</th>
+                    <th id="right">Score:</th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in leaderboard %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
+                    {% if row[2] == user_id %}
+                        <tr id="current-user">
+                            <td>{{ loop.index }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[0] }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[0] }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+                {% for row in currentUser %}
+                    <tr id="current-user">
+                        <td id="left">You</td>
                         <td>{{ row[1] }}</td>
-                        <td>{{ row[0] }}</td>
+                        <td id="right">{{ row[0] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

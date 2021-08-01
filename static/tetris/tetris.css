@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     margin: auto;
     margin-bottom: 20px;
-    box-shadow: 3px 3px 5px #111111;
+    box-shadow: 3px 3px 10px #111111;
 }
 
 .block {
@@ -37,7 +37,7 @@ span {
     background-color: #171c28;
     margin: auto;
     margin-bottom: 10px;
-    box-shadow: 3px 3px 5px #111111;
+    box-shadow: 3px 3px 10px #111111;
 }
 
 .previous-grid {

@@ -198,3 +198,44 @@ h2 {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+table {
+    display: table;
+    margin:auto;
+    width: 300px;
+    color: #5ccfe6;
+    background-color: #191f2c;
+    box-shadow: 0 0 10px #171c28;
+    border-radius: 10px 10px 10px 10px;
+}
+
+thead th {
+    background-color: #171c28;
+    color: #ffffff;
+}
+
+thead #left {
+    border-radius: 10px 0 0 0;
+}
+
+thead #right {
+    border-radius: 0 10px 0 0;
+}
+
+#table {
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+#current-user td{
+    color: #ffd580;
+    background-color: #171c28;
+}
+
+tbody #current-user #left{
+    border-radius: 0 0 0 10px;
+}
+
+tbody #current-user #right{
+    border-radius: 0 0 10px 0;
+}

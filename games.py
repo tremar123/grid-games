@@ -27,9 +27,11 @@ def whac_a_mole_game():
             db.session.commit()
 
         return render_template("whac-a-mole.html")
+
     else:
-        leaderboard = db.engine.execute("SELECT whac_a_mole.score, users.username FROM whac_a_mole INNER JOIN users ON whac_a_mole.user_id = users.id ORDER BY whac_a_mole.score DESC LIMIT 20")
-        return render_template("whac-a-mole.html", leaderboard=leaderboard)
+        leaderboard = db.engine.execute("SELECT whac_a_mole.score, users.username, users.id FROM whac_a_mole INNER JOIN users ON whac_a_mole.user_id = users.id ORDER BY whac_a_mole.score DESC LIMIT 20")
+        currentUser = db.engine.execute("SELECT whac_a_mole.score, users.username FROM whac_a_mole INNER JOIN users ON whac_a_mole.user_id = users.id WHERE whac_a_mole.user_id = %(user)s", {"user": session["user_id"]})
+        return render_template("whac-a-mole.html", leaderboard=leaderboard, currentUser=currentUser, user_id=session["user_id"])
 
 @app.route("/connect-four")
 @login_required
@@ -55,9 +57,11 @@ def snake_game():
             db.session.commit()
 
         return render_template("snake.html")
+
     else:
-        leaderboard = db.engine.execute("SELECT snake.score, users.username FROM snake INNER JOIN users ON snake.user_id = users.id ORDER BY snake.score DESC LIMIT 20")
-        return render_template("snake.html", leaderboard=leaderboard)
+        leaderboard = db.engine.execute("SELECT snake.score, users.username, users.id FROM snake INNER JOIN users ON snake.user_id = users.id ORDER BY snake.score DESC LIMIT 20")
+        currentUser = db.engine.execute("SELECT snake.score, users.username FROM snake INNER JOIN users ON snake.user_id = users.id WHERE snake.user_id = %(user)s", {"user": session["user_id"]})
+        return render_template("snake.html", leaderboard=leaderboard, currentUser=currentUser, user_id=session["user_id"])
 
 @app.route("/space-invaders")
 @login_required
@@ -88,6 +92,8 @@ def tetris_game():
             db.session.commit()
 
         return render_template("tetris.html")
+
     else:
-        leaderboard = db.engine.execute("SELECT tetris.score, users.username FROM tetris INNER JOIN users ON tetris.user_id = users.id ORDER BY tetris.score DESC LIMIT 20")
-        return render_template("tetris.html", leaderboard=leaderboard)
+        leaderboard = db.engine.execute("SELECT tetris.score, users.username, users.id FROM tetris INNER JOIN users ON tetris.user_id = users.id ORDER BY tetris.score DESC LIMIT 20")
+        currentUser = db.engine.execute("SELECT tetris.score, users.username FROM tetris INNER JOIN users ON tetris.user_id = users.id WHERE tetris.user_id = %(user)s", {"user": session["user_id"]})
+        return render_template("tetris.html", leaderboard=leaderboard, currentUser=currentUser, user_id=session["user_id"])
