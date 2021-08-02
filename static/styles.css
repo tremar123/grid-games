@@ -239,3 +239,11 @@ tbody #current-user #left-table-corner{
 tbody #current-user #right-table-corner{
     border-radius: 0 0 10px 0;
 }
+
+.passwordConfirm {
+    margin-bottom: 20px;
+}
+
+p {
+    color: red;
+}

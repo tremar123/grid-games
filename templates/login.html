@@ -4,10 +4,6 @@
     : Log In
 {% endblock %}
 
-{% block head %}
-    <script src="/static/login.js"></script>
-{% endblock %}
-
 {% block main %}
 <h2>Log in</h2>
     <form action="/login" method="post">
@@ -15,7 +11,8 @@
             <input class="form-control" type="text" autofocus name="username" placeholder="Username">
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
+            <input class="form-control passwordConfirm" type="password" name="password" placeholder="Password">
+            <p>{{message}}</p>
         </div>
         <div>
             <button class="btn" type="submit">Login</button>

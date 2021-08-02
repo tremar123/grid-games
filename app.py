@@ -78,14 +78,16 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    session.clear()
     if request.method == "POST":
-        session.clear()
 
+        # check if username entered
         if not request.form.get("username"):
-            return "must provide username"
+            return render_template("login.html", message="Enter username!")
 
+        # check if password entered
         if not request.form.get("password"):
-            return "must provide password"
+            return render_template("login.html", message="Enter password!")
 
         # query user information
         rows = users.query.filter_by(username=request.form.get("username")).first()
@@ -96,9 +98,9 @@ def login():
                 session["user_id"] = rows.id
                 return redirect("/")
             else:
-                return "invalid creditials"
+                return render_template("login.html", message="Invalid creditials!")
         except AttributeError:
-            return "user does not exist"
+            return render_template("login.html", message="Invalid creditials!")
     else:
         return render_template("login.html")
 
@@ -111,46 +113,52 @@ def logout():
 def register():
     if request.method == "POST":
         session.clear()
-        usern = request.form.get("username")
-        passw = request.form.get("password")
+        username = request.form.get("username")
+        password = request.form.get("password")
         confirm = request.form.get("confirmation")
 
-        # check username
-        if not usern:
-            return "Enter your username!"
+        # check if username is taken
+        try:
+            if username == users.query.filter_by(username=username).first().username:
+                return render_template("register.html", message="Username already taken!")
+        except AttributeError:
+            
+            # check username
+            if not username:
+                return render_template("register.html", message="Enter username!")
 
-        # check password
-        if not passw:
-            return "Enter your password!"
+            # check password
+            if not password:
+                return render_template("register.html", message="Enter password!")
 
-        # password lenght
-        if len(passw) < 6:
-            return "Password must be at least 6 characters long!"
+            # password lenght
+            if len(password) < 6:
+                return render_template("register.html", message="Password must be at least 6 characters long!", ID="password")
 
-        # check if there is at leat one digit in password
-        if not any(char.isdigit() for char in passw):
-            return "Password must contain at least one number!"
+            # check if there is at leat one digit in password
+            if not any(char.isdigit() for char in password):
+                return render_template("register.html", message="Password must contain at least one number!", ID="password")
 
-        # check confimation of password
-        if not confirm:
-            return "Confirm your password!"
+            # check confimation of password
+            if not confirm:
+                return render_template("register.html", message="Confirm your password!", ID="confirm")
 
-        # passwords match
-        if request.form.get("password") != request.form.get("confirmation"):
-            return "Passwords must match!"
+            # passwords match
+            if request.form.get("password") != request.form.get("confirmation"):
+                return render_template("register.html", message="Passwords must match!", ID="confirm")
 
-        # generates hash
-        passw = generate_password_hash(passw, method='pbkdf2:sha256', salt_length=8)
+            # generates hash
+            password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
 
-        # insert userame and hash into database
-        user = users(username=usern, password=passw)
-        db.session.add(user)
-        db.session.commit()
+            # insert userame and hash into database
+            user = users(username=username, password=password)
+            db.session.add(user)
+            db.session.commit()
 
-        # login user and redirect to index page
-        rows = users.query.filter_by(username=request.form.get("username")).first()
-        session["user_id"] = rows.id
-        return redirect("/")
+            # login user and redirect to index page
+            rows = users.query.filter_by(username=request.form.get("username")).first()
+            session["user_id"] = rows.id
+            return redirect("/")
 
     else:
         return render_template("register.html")
