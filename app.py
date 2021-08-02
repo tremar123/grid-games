@@ -1,4 +1,5 @@
 from flask import Flask, redirect, render_template, request, session
+from flask.templating import render_template_string
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import HTTPException, InternalServerError, default_exceptions
@@ -26,7 +27,7 @@ class users(db.Model):
 # bugs table
 class bugs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer)
     email = db.Column(db.String)
     text = db.Column(db.String, nullable=False)
     browser = db.Column(db.String)
@@ -171,15 +172,71 @@ def bug():
             bug = bugs(user_id=session["user_id"], email=request.form.get("email"), text=request.form.get("issue"), browser=request.headers.get("User-Agent"))
             db.session.add(bug)
             db.session.commit()
-            return render_template("bug_thanks.html")
+            return render_template("message.html", message_h2="Thanks for your report!", message_h3="Go play some games!")
         except KeyError:
             bug = bugs(email=request.form.get("email"), text=request.form.get("issue"), browser=request.headers.get("User-Agent"))
             db.session.add(bug)
             db.session.commit()
-            return render_template("bug_thanks.html")
+            return render_template("message.html", message_h2="Thanks for your report!", message_h3="Go play some games!")
     else:
         return render_template("bug.html")
 
+@app.route("/account")
+@login_required
+def account():
+    return render_template("account.html")
+
+@app.route("/delete", methods=["GET", "POST"])
+@login_required
+def delete():
+    if request.method == "POST":
+        db.engine.execute("DELETE FROM snake WHERE user_id = %(user)s", {"user": session["user_id"]})
+        db.engine.execute("DELETE FROM tetris WHERE user_id = %(user)s", {"user": session["user_id"]})
+        db.engine.execute("DELETE FROM whac_a_mole WHERE user_id = %(user)s", {"user": session["user_id"]})
+        db.engine.execute("DELETE FROM users WHERE id = %(user)s", {"user": session["user_id"]})
+        session.clear()
+        return render_template("message.html", message_h2="Account successfully deleted!")
+    else:
+        return render_template("delete.html")
+
+@app.route("/change-password", methods=["GET", "POST"])
+@login_required
+def change_password():
+    if request.method == "POST":
+        password = request.form.get("new-password")
+        confirm = request.form.get("confirmation")
+
+        rows = users.query.filter_by(id=session["user_id"]).first()
+
+        if not check_password_hash(rows.password, request.form.get("current-password")):
+             return render_template("/change-password.html", message="Wrong old password!")
+        
+        if not password:
+            return render_template("change-password.html", message="Enter password!")
+
+        # password lenght
+        if len(password) < 6:
+            return render_template("change-password.html", message="Password must be at least 6 characters long!", ID="password")
+
+        # check if there is at leat one digit in password
+        if not any(char.isdigit() for char in password):
+            return render_template("change-password.html", message="Password must contain at least one number!", ID="password")
+
+        # check confimation of password
+        if not confirm:
+            return render_template("change-password.html", message="Confirm your password!", ID="confirm")
+
+        # passwords match
+        if request.form.get("new-password") != request.form.get("confirmation"):
+            return render_template("change-password.html", message="Passwords must match!", ID="confirm")
+
+        password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+
+        db.engine.execute("UPDATE users SET password = %(password)s WHERE id = %(user)s", {"password": password, "user": session["user_id"]})
+
+        return render_template("message.html", message_h2="Password successfully changed!")
+    else:
+        return render_template("change-password.html")
 
 # listen for errors
 def errorhandler(e):

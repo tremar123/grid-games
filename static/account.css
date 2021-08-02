@@ -1,0 +1,19 @@
+#delete {
+    background-color: red;
+}
+
+#delete:hover {
+    box-shadow: 0 0 10px red;
+}
+
+#change-password {
+    background-color: #5ccfe6;
+}
+
+#change-password:hover {
+    box-shadow: 0 0 10px #5ccfe6;
+}
+
+h3 {
+    color: red;
+}

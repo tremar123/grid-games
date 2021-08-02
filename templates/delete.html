@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    : Account
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/account.css">
+{% endblock %}
+
+{% block main %}
+    <h3>Are you sure you want to delete account? <br> This will delete you from leaderboards!</h3>
+
+    <form action="/delete" method="post">
+        <button class="btn" id="delete" type="submit">Delete account</button>
+    </form>
+{% endblock %}

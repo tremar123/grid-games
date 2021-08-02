@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    : Account
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/account.css">
+{% endblock %}
+
+{% block main %}
+    <button class="btn" id="delete" onclick="window.location.href='/delete'">Delete account</button>
+    <button class="btn" id="change-password" onclick="window.location.href='/change-password'">Change password</button>
+{% endblock %}
