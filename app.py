@@ -61,9 +61,10 @@ def after_request(response):
     return response
 
 # use filesystem instead of cookies
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SECRET_KEY"] = "changeme"
 app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
+app.config.from_object(__name__)
 Session(app)
 
 
