@@ -66,6 +66,10 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# stay logged in after closing browser
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
 
 # app routes
 
