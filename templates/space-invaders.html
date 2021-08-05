@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block main %}
-    <h3>Score:<span id="result">0</span></h3>
+    <h3>Score: <span id="result">0</span></h3>
     <div class="grid">
         <div></div>
         <div></div>
@@ -243,6 +243,8 @@
         <div></div>
     </div>
 
+    <div id="play-again"></div>
+
     <div id="controls">
         <div class="buttons" id="left">
             <img class="images" src="/static/controls.svg">
@@ -253,5 +255,11 @@
         <div class="buttons" id="shoot">
             <img class="images" src="/static/space-invaders/shoot.svg">
         </div>
+    </div>
+
+    <div class="how-to-play">
+        <h4>Controls:</h4>
+        <img class="controls-space" src="/static/spacebar.svg">
+        <img class="controls" src="/static/arrow_keys.png">
     </div>
 {% endblock %}

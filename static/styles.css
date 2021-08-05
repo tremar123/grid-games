@@ -247,3 +247,23 @@ tbody #current-user #right-table-corner{
 p {
     color: red;
 }
+
+.controls {
+    margin-top: 10px;
+    max-height: 80px;
+}
+
+.controls-space {
+    margin-top: 50px;
+    max-height: 38px;
+}
+
+h4 {
+    font-size: large;
+}
+
+@media (pointer: coarse) and (hover: none) {
+    .how-to-play {
+        display: none;
+    }
+}

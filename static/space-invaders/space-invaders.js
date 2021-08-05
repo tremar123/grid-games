@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll(".grid div");
     const resultDisplay = document.querySelector("#result");
-    const main = document.querySelector("main");
+    const divPlay = document.querySelector("#play-again");
     const left = document.querySelector("#left");
     const right = document.querySelector("#right");
     const shootBtn = document.querySelector("#shoot");
@@ -75,25 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         //lost
         if (squares[currentShooterIndex].classList.contains("invader", "shooter")) {
+            document.removeEventListener("keyup", shoot);
+            document.removeEventListener("keydown", moveShooter);
+            left.removeEventListener("click", moveLeft);
+            right.removeEventListener("click", moveRight);
+            shootBtn.removeEventListener("click", shootByButton);
             resultDisplay.textContent = "Game Over";
             squares[currentShooterIndex].classList.add("boom");
             clearInterval(invaderId);
-            let button = document.createElement("button");
-            button.classList.add("btn");
-            button.innerHTML = "Play Again";
-            button.setAttribute("onclick", "window.location.reload();");
-            main.appendChild(button);
+            createPlayAgainButton();
         }
 
         for (let i = 0; i <= alienInvaders.length -1; i++) {
             if (alienInvaders[i] > (squares.length - (width-1))) {
                 resultDisplay.textContent = "Game Over";
                 clearInterval(invaderId);
-                let button = document.createElement("button");
-                button.classList.add("btn");
-                button.innerHTML = "Play Again";
-                button.setAttribute("onclick", "window.location.reload();");
-                main.appendChild(button);
+                createPlayAgainButton();
                 return;
             }
         }
@@ -101,11 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (alienInvadersTakenDown.length === alienInvaders.length) {
             clearInterval(invaderId);
             resultDisplay.textContent = "You win!";
-            let button = document.createElement("button");
-            button.classList.add("btn");
-            button.innerHTML = "Play Again";
-            button.setAttribute("onclick", "window.location.reload();");
-            main.appendChild(button);
+            createPlayAgainButton();
         }
     }
     
@@ -175,4 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
     left.addEventListener("click", moveLeft);
     right.addEventListener("click", moveRight);
     shootBtn.addEventListener("click", shootByButton);
+
+    function createPlayAgainButton() {
+        let button = document.createElement("button");
+        button.classList.add("btn");
+        button.innerHTML = "Play Again";
+        button.setAttribute("onclick", "window.location.reload();");
+        divPlay.appendChild(button);
+    }
 })

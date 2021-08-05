@@ -5,7 +5,6 @@
     width: 302px;
     height: 302px;
     margin: auto;
-    margin-bottom: 50px;
 }
 
 .grid div {
@@ -33,6 +32,10 @@
 
 span {
     color: #5ccfe6;
+}
+
+#play-again {
+    height: 100px;
 }
 
 #controls {

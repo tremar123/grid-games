@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nextRandom = Math.floor(Math.random() * tetrominos.length);
             current = tetrominos[random][currentRotation];
             currentPosition = 4;
+            timerId *= 0.99;
             draw();
             displayShape();
             gameOver();
@@ -181,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
             timerId = null;
         } else {
             draw();
-            timerId = setInterval(moveDown, 800);
+            timerId = setInterval(moveDown, 650);
             nextRandom = Math.floor(Math.random() * tetrominos.length);
             displayShape();
         }
