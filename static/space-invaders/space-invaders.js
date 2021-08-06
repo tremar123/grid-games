@@ -88,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let i = 0; i <= alienInvaders.length -1; i++) {
             if (alienInvaders[i] > (squares.length - (width-1))) {
+                document.removeEventListener("keyup", shoot);
+                document.removeEventListener("keydown", moveShooter);
                 resultDisplay.textContent = "Game Over";
                 clearInterval(invaderId);
                 createPlayAgainButton();
