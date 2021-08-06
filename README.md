@@ -27,5 +27,6 @@ In frogger your task is to get to the finish through obstacles like river or roa
 ### Tetris
 In tetris you fill line with blocks, then it will disappear and you will gain score, your task is to repeat this as many times as you can before you reach top.
 
+#
 Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own. Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
 
