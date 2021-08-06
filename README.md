@@ -15,15 +15,15 @@ GridGames is a flask web application where you can sign up and play few games th
 ### Memory game
 In memory game you have to find all pairs of opening and closing HTML tags by flipping cards one by one. When you find pair they will stay flipped if don't they will flip back.
 ### Whac-a-mole
-
+In whac-a-mole you have to hit mole as many times as you can in 20 seconds. Your score will be saved in leaderboard below.
 ### Connect four
-
+Connect four is game for two players, where each must line up 4 circles horizontally, vertically or diagonaly, the first to succeed wins.
 ### Snake
-
+In snake your task is to eat all apples and fill the playboard.
 ### Space Invaders
-
+In space invaders you must shoot all aliens before they hit you or they get to earth.
 ### Frogger
-
+In frogger your task is to get to the finish through obstacles like river or road.
 ### Tetris
 
 Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own. Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
