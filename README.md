@@ -5,11 +5,23 @@ GridGames is a flask web application where you can sign up and play few games th
 
 These games include:
 * [Memory game](#memory-game)
-* Whac-a-mole
-* Connect four
-* Snake
-* Space Invaders
-* Frogger
-* Tetris
+* [Whac-a-mole](#whac-a-mole)
+* [Connect four](#connect-four)
+* [Snake](#snake)
+* [Space Invaders](#space-invaders)
+* [Frogger](#frogger)
+* [Tetris](#tetris)
 
-## Memory game
+### Memory game
+
+### Whac-a-mole
+
+### Connect four
+
+### Snake
+
+### Space Invaders
+
+### Frogger
+
+### Tetris
