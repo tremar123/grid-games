@@ -31,7 +31,7 @@ In tetris you fill line with blocks, then it will disappear and you will gain sc
 Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own. Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
 
 ## Files
-**Static** - in this folder are images, css and javascript files for each page.\
+**Static** - in this folder are files used in multiple pages and folders for each game where are css, javascript files as well as images used only on that page.\
 <br>
 **Templates** - this folder contains all HTML files.\
 <br>
