@@ -13,7 +13,7 @@ GridGames is a flask web application where you can sign up and play few games th
 * [Tetris](#tetris)
 
 ### Memory game
-
+In memory game you have to find all pairs of opening and closing HTML tags by flipping cards one by one. When you find pair they will stay flipped if don't they will flip back.
 ### Whac-a-mole
 
 ### Connect four
@@ -26,6 +26,5 @@ GridGames is a flask web application where you can sign up and play few games th
 
 ### Tetris
 
-Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own.
-Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
+Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own. Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
 
