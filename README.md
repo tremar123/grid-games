@@ -36,4 +36,4 @@ Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where
 **app.py** is default flask application.\
 **helpers.py** contains login_required function and was meant to contain additional, but additional functions weren't needed.\
 **games.py** contains all *app.routes* with games to be separated from other *app.routes* in **app.py**\
-**Procfile**, **requirements.txt**, **runtime.txt** - these files contains information requiered for deploy on [heroku.com](https://heroku.com)\
+**Procfile**, **requirements.txt**, **runtime.txt** - these files contains information requiered for deploy on [heroku.com](https://heroku.com)
