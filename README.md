@@ -4,7 +4,7 @@
 GridGames is a flask web application where you can sign up and play few games that are based on grid.
 
 These games include:
-* (Memory game)
+* [Memory game](#memory-game)
 * Whac-a-mole
 * Connect four
 * Snake
