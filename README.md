@@ -3,7 +3,7 @@
 #### Description:
 GridGames is a flask web application where you can sign up and play few games that are based on grid.
 
-#### These games include:
+#### Games you can play:
 * [Memory game](#memory-game)
 * [Whac-a-mole](#whac-a-mole)
 * [Connect four](#connect-four)
@@ -31,14 +31,14 @@ In tetris you fill line with blocks, then it will disappear and you will gain sc
 Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where you can see score of top 20 players and your own. Other games doesn't have this, beacause they are not scored or they have maximum score you can easily obtain.
 
 ## Files
-**Static** - in this folder are files used in multiple pages and folders for each game where are css, javascript files as well as images used only on that page.\
+**Static** - in this folder are files used in multiple pages and folders for each game where are css, javascript files as well as images used only on that page.
 
-**Templates** - this folder contains all HTML files.\
+**Templates** - this folder contains all HTML files.
 
-**app.py** is default flask application.\
+**app.py** is default flask application.
 
-**helpers.py** contains login_required function and was meant to contain additional, but additional functions weren't needed.\
+**helpers.py** contains login_required function and was meant to contain additional, but additional functions weren't needed.
 
-**games.py** contains all *app.routes* with games to be separated from other *app.routes* in **app.py**\
+**games.py** contains all *app.routes* with games to be separated from other *app.routes* in **app.py**
 
 **Procfile**, **requirements.txt**, **runtime.txt** - these files contains information requiered for deploy on [heroku.com](https://heroku.com)
