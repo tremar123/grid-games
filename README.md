@@ -32,13 +32,13 @@ Whac-a-mole, Snake, Tetris have their own leaderboards table at the bottom where
 
 ## Files
 **Static** - in this folder are files used in multiple pages and folders for each game where are css, javascript files as well as images used only on that page.\
-<br>
+
 **Templates** - this folder contains all HTML files.\
-<br>
+
 **app.py** is default flask application.\
-<br>
+
 **helpers.py** contains login_required function and was meant to contain additional, but additional functions weren't needed.\
-<br>
+
 **games.py** contains all *app.routes* with games to be separated from other *app.routes* in **app.py**\
-<br>
+
 **Procfile**, **requirements.txt**, **runtime.txt** - these files contains information requiered for deploy on [heroku.com](https://heroku.com)
